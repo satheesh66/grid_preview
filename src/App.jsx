@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import initialData from './data.json';
 import Widget from './components/Widget';
@@ -11,6 +12,7 @@ const App = () => {
 
   // New state variables for configurable keys
   const [widgetListKey, setWidgetListKey] = useState("Children");
+  const [gridLayoutConfigKey, setGridLayoutConfigKey] = useState("GridLayoutConfig"); // New key
   const [colStartKey, setColStartKey] = useState("colStart");
   const [rowStartKey, setRowStartKey] = useState("rowStart");
   const [colSpanKey, setColSpanKey] = useState("colSpan");
@@ -58,6 +60,9 @@ const App = () => {
             <label>Widget List Key:
               <input type="text" value={widgetListKey} onChange={(e) => setWidgetListKey(e.target.value)} />
             </label>
+            <label>Grid Layout Config Key:
+              <input type="text" value={gridLayoutConfigKey} onChange={(e) => setGridLayoutConfigKey(e.target.value)} />
+            </label>
             <label>Col Start Key:
               <input type="text" value={colStartKey} onChange={(e) => setColStartKey(e.target.value)} />
             </label>
@@ -88,6 +93,7 @@ const App = () => {
           <Widget 
             key={widget.WidgetMetadata ? widget.WidgetMetadata.FlowId : index} 
             widget={widget} 
+            gridLayoutConfigKey={gridLayoutConfigKey}
             colStartKey={colStartKey}
             rowStartKey={rowStartKey}
             colSpanKey={colSpanKey}

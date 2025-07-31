@@ -1,9 +1,10 @@
-
 import { getCssVar } from '../utils/styleUtils';
 import { getWidgetGridStyles } from '../utils/gridUtils';
 
-const Widget = ({ widget, colStartKey, rowStartKey, colSpanKey, rowSpanKey }) => {
-  const gridStyles = getWidgetGridStyles(widget.GridLayoutConfig, colStartKey, rowStartKey, colSpanKey, rowSpanKey);
+const Widget = ({ widget, gridLayoutConfigKey, colStartKey, rowStartKey, colSpanKey, rowSpanKey }) => {
+  const gridLayoutConfig = widget[gridLayoutConfigKey];
+
+  const gridStyles = getWidgetGridStyles(gridLayoutConfig, colStartKey, rowStartKey, colSpanKey, rowSpanKey);
   const inlineStyles = {
     backgroundColor: getCssVar(widget.WidgetStyles.backgroundColor),
     color: getCssVar(widget.WidgetStyles.color),
@@ -12,10 +13,10 @@ const Widget = ({ widget, colStartKey, rowStartKey, colSpanKey, rowSpanKey }) =>
     border: widget.WidgetStyles.border,
   };
 
-  const colStart = widget.GridLayoutConfig[colStartKey];
-  const rowStart = widget.GridLayoutConfig[rowStartKey];
-  const colSpan = widget.GridLayoutConfig[colSpanKey];
-  const rowSpan = widget.GridLayoutConfig[rowSpanKey];
+  const colStart = gridLayoutConfig[colStartKey];
+  const rowStart = gridLayoutConfig[rowStartKey];
+  const colSpan = gridLayoutConfig[colSpanKey];
+  const rowSpan = gridLayoutConfig[rowSpanKey];
 
   return (
     <div className="widget" style={{ ...gridStyles, ...inlineStyles }}>
