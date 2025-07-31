@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import initialData from './data.json';
 import Widget from './components/Widget';
@@ -35,7 +36,7 @@ const App = () => {
         <textarea
           value={jsonInput}
           onChange={handleJsonChange}
-          rows="15"
+          rows="8"
           cols="80"
           placeholder="Paste your JSON here..."
         ></textarea>
