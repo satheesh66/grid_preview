@@ -1,10 +1,9 @@
-
 export const getWidgetGridStyles = (gridLayoutConfig) => {
   const { colStart, rowStart, colSpan, rowSpan } = gridLayoutConfig;
   return {
     gridColumnStart: colStart,
-    gridColumnEnd: colStart + colSpan,
+    gridColumnEnd: `span ${colSpan}`,
     gridRowStart: rowStart,
-    gridRowEnd: rowStart + rowSpan,
+    gridRowEnd: `span ${rowSpan}`,
   };
 };
