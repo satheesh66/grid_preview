@@ -1,9 +1,6 @@
-
 .dashboard {
   padding: 2rem;
   position: relative; /* Added for positioning context */
-  max-width: 1400px; /* Max width for centering */
-  margin: 0 auto; /* Center the dashboard */
 }
 
 .json-toggle-section {
@@ -56,7 +53,7 @@
   padding: 10px;
   border: 1px solid var(--color-gray-200);
   border-radius: 4px;
-  font-family: 'Fira Code', 'Consolas', monospace;
+  font-family: "Fira Code", "Consolas", monospace;
   font-size: 0.9rem;
   margin-bottom: 1rem;
   resize: vertical;
@@ -101,7 +98,8 @@
 }
 
 .widget {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -161,7 +159,10 @@
   }
 
   .grid-container {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Reflow widgets */
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(200px, 1fr)
+    ); /* Reflow widgets */
     margin-top: 1rem; /* Add some top margin */
   }
 
