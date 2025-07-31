@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import initialData from './data.json';
 import Widget from './components/Widget';
@@ -58,7 +57,7 @@ const App = () => {
         </div>
       )}
       
-      <div className="section-divider"></div> {/* Added section divider */}
+      {/* Removed section-divider */}
 
       <div className="grid-container">
         {Children.map((widget) => (
