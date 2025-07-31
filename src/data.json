@@ -4,6 +4,28 @@
   "Children": [
     {
       "ReferenceFromWidgetList": {
+        "WidgetName": "Manager dashboard",
+        "Appearance": "Manager dashboard displaying approval load and leave analytics for team members."
+      },
+      "GridLayoutConfig": {
+        "colSpan": 36,
+        "rowSpan": 10,
+        "colStart": 1,
+        "rowStart": 1
+      },
+      "WidgetStyles": {
+        "backgroundColor": "Color.White",
+        "color": "Color.Gray.900",
+        "padding": "16px",
+        "textAlign": "center"
+      },
+      "WidgetMetadata": {
+        "FlowId": "Dashboard_Header",
+        "FlowType": "DashboardHeader"
+      }
+    },
+    {
+      "ReferenceFromWidgetList": {
         "WidgetName": "Card Report",
         "Appearance": "A simple card widget will display the numerical insights as a label",
         "WhenToUse": "Use this widget to see the data in card visualisation",

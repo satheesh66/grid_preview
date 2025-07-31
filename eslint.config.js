@@ -1,29 +1,42 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import { defineConfig, globalIgnores } from 'eslint/config'
+import globals from "globals";
+import pluginJs from "@eslint/js";
+import pluginReactConfig from "eslint-plugin-react/configs/recommended.js";
+import pluginReactJsxRuntime from "eslint-plugin-react/configs/jsx-runtime.js";
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
 
-export default defineConfig([
-  globalIgnores(['dist']),
+export default [
   {
-    files: ['**/*.{js,jsx}'],
-    extends: [
-      js.configs.recommended,
-      reactHooks.configs['recommended-latest'],
-      reactRefresh.configs.vite,
-    ],
-    languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
-      parserOptions: {
-        ecmaVersion: 'latest',
-        ecmaFeatures: { jsx: true },
-        sourceType: 'module',
-      },
+    files: ["**/*.{js,mjs,cjs,jsx}"],
+    languageOptions: { 
+      parserOptions: { ecmaFeatures: { jsx: true } },
+      globals: { ...globals.browser, process: true, module: true, require: true, __dirname: true, console: true } 
+    },
+    settings: { react: { version: "detect" } },
+    ...pluginReactConfig,
+    ...pluginReactJsxRuntime,
+    plugins: {
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
     },
     rules: {
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
-    },
+      ...pluginJs.configs.recommended.rules,
+      "react/react-in-jsx-scope": "off",
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'warn',
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
+    }
   },
-])
+  {
+    ignores: ["dist/**"],
+  },
+  {
+    files: ["src/App.jsx", "src/main.jsx"],
+    rules: {
+      "no-unused-vars": "off"
+    }
+  }
+];
