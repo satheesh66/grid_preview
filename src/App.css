@@ -1,3 +1,4 @@
+
 .dashboard {
   padding: 2rem;
 }
@@ -72,12 +73,18 @@
   font-weight: 500;
 }
 
+.section-divider {
+  height: 4px;
+  background-color: var(--color-gray-200);
+  margin: 3rem 0;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(36, 1fr);
   grid-auto-rows: 4px;
   gap: 0;
-  margin-top: 3rem; /* Increased margin-top for separation */
+  /* Removed margin-top as separation is handled by .section-divider */
 }
 
 .widget {
