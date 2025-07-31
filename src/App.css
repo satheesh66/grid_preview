@@ -1,3 +1,4 @@
+
 .dashboard {
   padding: 2rem;
   position: relative; /* Added for positioning context */
@@ -31,8 +32,8 @@
   top: 6rem; /* Positioned below the toggle button */
   right: 2rem; /* Aligned with the toggle button */
   z-index: 99; /* Below the toggle button, above the grid */
-  width: 400px; /* Fixed width */
-  max-height: 70vh; /* Max height with scrolling */
+  width: 600px; /* Increased width */
+  max-height: 85vh; /* Increased max height with scrolling */
   overflow-y: auto; /* Enable vertical scrolling */
   padding: 1.5rem;
   background-color: var(--color-white);
