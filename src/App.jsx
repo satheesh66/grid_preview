@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import initialData from './data.json';
 import Widget from './components/Widget';
@@ -8,6 +7,7 @@ const App = () => {
   const [jsonData, setJsonData] = useState(initialData);
   const [jsonInput, setJsonInput] = useState(JSON.stringify(initialData, null, 2));
   const [error, setError] = useState(null);
+  const [showJsonInput, setShowJsonInput] = useState(false); // New state for visibility
 
   const handleJsonChange = (event) => {
     setJsonInput(event.target.value);
@@ -21,28 +21,41 @@ const App = () => {
       }
       setJsonData(parsedData);
       setError(null);
+      setShowJsonInput(false); // Hide input after loading
     } catch (e) {
       setError("Invalid JSON: " + e.message);
       console.error("JSON parsing error:", e);
     }
   };
 
+  const toggleJsonInput = () => {
+    setShowJsonInput(!showJsonInput);
+  };
+
   const { Children } = jsonData;
 
   return (
     <div className="dashboard">
-      <div className="json-input-section">
-        <h2>Load Custom JSON</h2>
-        <textarea
-          value={jsonInput}
-          onChange={handleJsonChange}
-          rows="8"
-          cols="80"
-          placeholder="Paste your JSON here..."
-        ></textarea>
-        <button onClick={loadJson}>Load JSON</button>
-        {error && <p className="error-message">{error}</p>}
+      <div className="json-toggle-section">
+        <button onClick={toggleJsonInput}>
+          {showJsonInput ? 'Hide JSON Input' : 'Show JSON Input'}
+        </button>
       </div>
+
+      {showJsonInput && (
+        <div className="json-input-section">
+          <h2>Load Custom JSON</h2>
+          <textarea
+            value={jsonInput}
+            onChange={handleJsonChange}
+            rows="8"
+            cols="80"
+            placeholder="Paste your JSON here..."
+          ></textarea>
+          <button onClick={loadJson}>Load JSON</button>
+          {error && <p className="error-message">{error}</p>}
+        </div>
+      )}
       
       <div className="grid-container">
         {Children.map((widget) => (
