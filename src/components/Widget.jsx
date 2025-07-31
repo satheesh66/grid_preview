@@ -1,8 +1,9 @@
+
 import { getCssVar } from '../utils/styleUtils';
 import { getWidgetGridStyles } from '../utils/gridUtils';
 
-const Widget = ({ widget }) => {
-  const gridStyles = getWidgetGridStyles(widget.GridLayoutConfig);
+const Widget = ({ widget, colStartKey, rowStartKey, colSpanKey, rowSpanKey }) => {
+  const gridStyles = getWidgetGridStyles(widget.GridLayoutConfig, colStartKey, rowStartKey, colSpanKey, rowSpanKey);
   const inlineStyles = {
     backgroundColor: getCssVar(widget.WidgetStyles.backgroundColor),
     color: getCssVar(widget.WidgetStyles.color),
@@ -11,7 +12,10 @@ const Widget = ({ widget }) => {
     border: widget.WidgetStyles.border,
   };
 
-  const { colStart, rowStart, colSpan, rowSpan } = widget.GridLayoutConfig;
+  const colStart = widget.GridLayoutConfig[colStartKey];
+  const rowStart = widget.GridLayoutConfig[rowStartKey];
+  const colSpan = widget.GridLayoutConfig[colSpanKey];
+  const rowSpan = widget.GridLayoutConfig[rowSpanKey];
 
   return (
     <div className="widget" style={{ ...gridStyles, ...inlineStyles }}>
